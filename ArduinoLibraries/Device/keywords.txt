@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map For Timer Class
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Device	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+LOGO        KEYWORD2
+getCompany  KEYWORD2
+stop        KEYWORD2
+execute     KEYWORD2
+pause       KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+ONCE	LITERAL1
+TWICE   LITERAL1
+NEVER	LITERAL1
+FOREVER	LITERAL1

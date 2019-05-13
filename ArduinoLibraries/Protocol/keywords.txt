@@ -1,0 +1,38 @@
+#######################################
+# Syntax Coloring Map For Timer Class
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Protocol	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+generateSum     KEYWORD2
+verifySum       KEYWORD2
+buffer          KEYWORD2
+setOnReceived   KEYWORD2
+run             KEYWORD2
+send             KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+LENGTH	LITERAL1
+
+   public:
+      uint8_t generateSum();
+      bool verifySum();
+
+      static const uint8_t LENGTH = 8;
+      uint8_t buffer[LENGTH];
+
+      Protocol(uint8_t rx, uint8_t tx);
+      void setOnReceived(Callback onReceived);
+      void run(void);
+      void send();

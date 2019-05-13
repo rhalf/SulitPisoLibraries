@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map For Terminal Class
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+CoinAcceptor	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+pulses     KEYWORD2
+attach     KEYWORD2
+detach     KEYWORD2
+coinPulses     KEYWORD2
+ 
+#######################################
+# Constants (LITERAL1)
+#######################################
+#
+#ONCE	LITERAL1
+#TWICE   LITERAL1
+#NEVER	LITERAL1
+#FOREVER	LITERAL1
