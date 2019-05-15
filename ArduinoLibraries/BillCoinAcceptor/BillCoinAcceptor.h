@@ -1,17 +1,17 @@
-#ifndef _COINACCEPTOR_H
-#define _COINACCEPTOR_H
+#ifndef _BILLCOINACCEPTOR_H
+#define _BILLCOINACCEPTOR_H
 
 #include "Arduino.h"
 
 /// @author Rhalf Wendel D Caacbay <rhalfcaacbay@gmail.com>
 typedef void (* Callback)();
 
-class CoinAcceptor {
+class BillCoinAcceptor {
 
 public:
-  CoinAcceptor(uint16_t pinCoin);
-  CoinAcceptor(uint16_t pinCoin,  uint8_t coinValue);
-  CoinAcceptor(uint16_t pinCoin, uint8_t coinValue, bool activeState);
+  BillCoinAcceptor(uint16_t pinCoin);
+  BillCoinAcceptor(uint16_t pinCoin,  uint8_t coinValue);
+  BillCoinAcceptor(uint16_t pinCoin, uint8_t coinValue, bool activeState);
 
   uint16_t coinPulse = 0;
 
@@ -27,4 +27,4 @@ private:
   uint8_t _activeState = false;
 };
 
-#endif // _COINACCEPTOR_H
+#endif // _BILLCOINACCEPTOR_H

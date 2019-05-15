@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-CoinAcceptor	KEYWORD1
+BillCoinAcceptor	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)

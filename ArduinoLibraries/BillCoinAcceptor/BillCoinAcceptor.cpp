@@ -1,9 +1,9 @@
-#include "CoinAcceptor.h"
+#include "BillCoinAcceptor.h"
 #include "Arduino.h"
 
 typedef void (* Callback)();
 
-CoinAcceptor::CoinAcceptor(uint16_t pinCoin) {
+BillCoinAcceptor::BillCoinAcceptor(uint16_t pinCoin) {
     _pinCoin = pinCoin;
     _coinValue = 1;
     if (_activeState) {
@@ -13,7 +13,7 @@ CoinAcceptor::CoinAcceptor(uint16_t pinCoin) {
     }
 }
 
-CoinAcceptor::CoinAcceptor(uint16_t pinCoin, uint8_t coinValue) {
+BillCoinAcceptor::BillCoinAcceptor(uint16_t pinCoin, uint8_t coinValue) {
     _pinCoin = pinCoin;
     _coinValue = coinValue;
     if (_activeState) {
@@ -23,7 +23,7 @@ CoinAcceptor::CoinAcceptor(uint16_t pinCoin, uint8_t coinValue) {
     }
 }
 
-CoinAcceptor::CoinAcceptor(uint16_t pinCoin, uint8_t coinValue, bool activeState) {
+BillCoinAcceptor::BillCoinAcceptor(uint16_t pinCoin, uint8_t coinValue, bool activeState) {
     _pinCoin = pinCoin;
     _coinValue = coinValue;
     _activeState = activeState;
@@ -35,7 +35,7 @@ CoinAcceptor::CoinAcceptor(uint16_t pinCoin, uint8_t coinValue, bool activeState
     }
 }
 
-// CoinAcceptor::CoinAcceptor(uint8_t pinCoin, uint8_t pinCount) {
+// BillCoinAcceptor::BillCoinAcceptor(uint8_t pinCoin, uint8_t pinCount) {
 //     _pinCoin = pinCoin;
 //     _pinCount = pinCount;
 
@@ -43,7 +43,7 @@ CoinAcceptor::CoinAcceptor(uint16_t pinCoin, uint8_t coinValue, bool activeState
 //     pinMode(_pinCount , INPUT_PULLUP);
 // }
 
-void CoinAcceptor::attach(Callback cbCoin) {
+void BillCoinAcceptor::attach(Callback cbCoin) {
     if (_activeState) {
          attachInterrupt(digitalPinToInterrupt(_pinCoin), cbCoin, RISING);
     } else {
@@ -51,24 +51,24 @@ void CoinAcceptor::attach(Callback cbCoin) {
     }
 }
 
-// void CoinAcceptor::attach(Callback cbCoin, Callback cbCount) {
+// void BillCoinAcceptor::attach(Callback cbCoin, Callback cbCount) {
 //     attachInterrupt(digitalPinToInterrupt(_pinCoin), cbCoin, FALLING);
 //     attachInterrupt(digitalPinToInterrupt(_pinCount), cbCount, FALLING);
 // }
 
 
-void CoinAcceptor::detach(void) {
+void BillCoinAcceptor::detach(void) {
     detachInterrupt(digitalPinToInterrupt(_pinCoin));
 }
 
-// void CoinAcceptor::detach(void) {
+// void BillCoinAcceptor::detach(void) {
 //     detachInterrupt(digitalPinToInterrupt(_pinCoin));
 //     detachInterrupt(digitalPinToInterrupt(_pinCount ));
 // }
 
 
 //Uncomment when emi detected
-void CoinAcceptor::readCoinPulse(void) {
+void BillCoinAcceptor::readCoinPulse(void) {
     for (uint8_t interval = 0; interval < 150; interval++) {
         if (digitalRead(_pinCoin))return;
         else delayMicroseconds(1);
@@ -77,7 +77,7 @@ void CoinAcceptor::readCoinPulse(void) {
 }
 
 //Uncomment when emi detected
-// void CoinAcceptor::onCount(void) {
+// void BillCoinAcceptor::onCount(void) {
 //     for (uint8_t interval = 0; interval < 10; interval++) {
 //         if (digitalRead(_pinCount))return;
 //             else delayMicroseconds(1);

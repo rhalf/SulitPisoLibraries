@@ -8,7 +8,7 @@ Storage::Storage(void) {
 }
 
 void Storage::destroy(void) {
-   for (uint16_t index = 0 ; index < EEPROM.length() ; index++) {
+   for (uint32_t index = 0 ; index < EEPROM.length() ; index++) {
       if (EEPROM.read(index) != 0x00) { EEPROM.write(index, 0x00); }
    }
 }
@@ -44,7 +44,7 @@ void Storage::reset(uint32_t date) {
    EEPROM.put(Storage::MODE, _zero); 
    EEPROM.put(Storage::PIN, _pin); 
    EEPROM.put(Storage::RATE, _rate); 
-   EEPROM.put(Storage::MINIMUM, _zero); 
+   EEPROM.put(Storage::MINIMUM, _zero);
 
    EEPROM.put(Storage::RESET, date);
 }
@@ -58,7 +58,7 @@ void Storage::format(uint32_t date) {
    EEPROM.put(Storage::MODE, _zero); 
    EEPROM.put(Storage::PIN, _pin); 
    EEPROM.put(Storage::RATE, _rate); 
-   EEPROM.put(Storage::MINIMUM, _zero); 
+   EEPROM.put(Storage::MINIMUM, _zero);
 
    EEPROM.put(Storage::CURRENT_TRANSACT, _zero);
    EEPROM.put(Storage::CURRENT_GROSS, _zero);
@@ -94,7 +94,6 @@ uint32_t Storage::getPin(void) {
 void Storage::setRate(uint32_t rate) { 
    EEPROM.put(Storage::RATE, rate); 
 }
-
 uint32_t Storage::getRate(void) {
    uint32_t rate; 
    EEPROM.get(Storage::RATE, rate);
@@ -104,16 +103,14 @@ uint32_t Storage::getRate(void) {
 void Storage::setMinimum(uint32_t min) { 
    EEPROM.put(Storage::MINIMUM, min); 
 }
-
 uint32_t Storage::getMinimum(void) {
    uint32_t min; 
    EEPROM.get(Storage::MINIMUM, min);
    return min;
 }
-
 //=============================================================================
 //Transaction
-void Storage::incrementTransaction(uint8_t value) {
+void Storage::incrementTransaction(uint32_t value) {
    uint32_t transaction; 
    //store to current
    EEPROM.get(Storage::CURRENT_TRANSACT, transaction);
@@ -133,9 +130,9 @@ uint32_t Storage::getLifetimeTransaction (void) {
    uint32_t transaction; 
    EEPROM.get(Storage::LIFETIME_TRANSACT, transaction);
    return transaction;
-};
+}
 //Gross
-void Storage::incrementGross(uint8_t value) {
+void Storage::incrementGross(uint32_t value) {
    uint32_t gross; 
    //store to current
    EEPROM.get(Storage::CURRENT_GROSS, gross);
@@ -155,10 +152,10 @@ uint32_t Storage::getLifetimeGross (void) {
    uint32_t gross; 
    EEPROM.get(Storage::LIFETIME_GROSS, gross);
    return gross;
-};
+}
 //=============================================================================
 //Serve
-void Storage::incrementServe(uint8_t value) {
+void Storage::incrementServe(uint32_t value) {
    uint32_t serve; 
    //store to current
    EEPROM.get(Storage::CURRENT_SERVE, serve);
@@ -178,11 +175,11 @@ uint32_t Storage::getLifetimeServe(void) {
    uint32_t serve; 
    EEPROM.get(Storage::LIFETIME_SERVE, serve);
    return serve;
-};
+}
 
 //=============================================================================
 //Credit
-void Storage::incrementCredit(uint8_t value) {
+void Storage::incrementCredit(uint32_t value) {
    uint32_t credit; 
    //store to current
    EEPROM.get(Storage::CURRENT_CREDIT, credit);
@@ -202,11 +199,11 @@ uint32_t Storage::getLifetimeCredit(void) {
    uint32_t credit; 
    EEPROM.get(Storage::LIFETIME_CREDIT, credit);
    return credit;
-};
+}
 
 //=============================================================================
 //power
-void Storage::incrementPower(uint8_t value) {
+void Storage::incrementPower(uint32_t value) {
    uint32_t power; 
    //store to current
    EEPROM.get(Storage::CURRENT_POWER, power);
@@ -226,5 +223,5 @@ uint32_t Storage::getLifetimePower(void) {
    uint32_t power; 
    EEPROM.get(Storage::LIFETIME_POWER, power);
    return power;
-};
+}
 

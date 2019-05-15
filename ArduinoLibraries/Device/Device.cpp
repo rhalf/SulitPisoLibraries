@@ -89,7 +89,7 @@ static const uint8_t Device::LOGO[] PROGMEM = {
    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
    0x00, 0x00, 0x00, 0x00 };
 
-static const char  Device::COMPANY[] PROGMEM            = "A.R.Technologies";
+static const char  Device::COMPANY[] PROGMEM            = "A.R.T.S";
 static const char  Device::COUNTRY[] PROGMEM            = "Philippines";
 
 static const char  Device::TERMINAL[] PROGMEM           = "Terminal";
@@ -105,6 +105,7 @@ static const char  Device::TRANSACTION[] PROGMEM        = "Trans";
 static const char  Device::GROSS[] PROGMEM              = "Coins";
 static const char  Device::SERVINGTIME[] PROGMEM        = "Serve";
 static const char  Device::CREDIT[] PROGMEM             = "Credit";
+static const char  Device::POWER[] PROGMEM              = "Power";
 
 static const char * const Device::TABLE[] PROGMEM= { 
     Device::COMPANY, 
@@ -123,7 +124,8 @@ static const char * const Device::TABLE[] PROGMEM= {
     Device::TRANSACTION,
     Device::GROSS,
     Device::SERVINGTIME,
-    Device::CREDIT
+    Device::CREDIT,
+    Device::POWER
 };
 
 static char Device::buffer[20];
@@ -201,6 +203,12 @@ static char * Device::getServingTime() {
 
 static char * Device::getCredit() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[12]);
+    strcpy_P(Device::buffer, ptr);
+    return  Device::buffer;
+}
+
+static char * Device::getPower() {
+    char * ptr = (char *) pgm_read_word(&Device::TABLE[13]);
     strcpy_P(Device::buffer, ptr);
     return  Device::buffer;
 }

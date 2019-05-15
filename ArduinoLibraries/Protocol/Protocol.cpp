@@ -17,14 +17,10 @@ Protocol::Protocol(uint8_t rx, uint8_t tx) : SoftwareSerial(rx, tx) {
 }
 
 void Protocol::interpret(void) {
-   String device = "SPM1";
+   String device = "SPC001";
    String comma = ",";
    String ok = "OK";
-   //SPM1,G0,FD,RD,CL
-   //SPM1,G1,PI,RA,RU
-   //SPM1,G2,TC,GC,SC,CC
-   //SPM1,G3,TL,GL,SL,CL
-   //SPM1,G4,T0,T1,T2,T3
+
    uint8_t index[3];
    index[0] = buffer.indexOf(comma);
    index[1] = buffer.indexOf(comma, index[0] + 1);
@@ -51,21 +47,28 @@ void Protocol::interpret(void) {
    }
 
    if (command == "GA") {
-        //2
+      //2
       buffer +=  String(_storage.getMode()) + comma;
       //3,4,5
-      buffer  += String(_storage.getFormatDate()) + comma + String(_storage.getResetDate()) + comma  + String(_storage.getClearDate()) + comma;
+      buffer += String(_storage.getFormatDate()) + comma + String(_storage.getResetDate()) + comma  + String(_storage.getClearDate()) + comma;
       //6,7,8
-      buffer  += String(Timer::getSeconds()) + comma + String(_storage.getRate()) + comma + String(_storage.getMinimum()) + comma;
+      buffer += String(Timer::getSeconds()) + comma + String(_storage.getRate()) + comma + String(_storage.getMinimum()) + comma;
       // 9,10,11,12
-      buffer  += String(terminals[0].timeLapse) + comma + String(terminals[1].timeLapse) + comma +  String(terminals[2].timeLapse) + comma +  String(terminals[3].timeLapse) + comma;
-      //13,14,15,16,17
-      buffer  += String(_storage.getCurrentTransaction()) + comma + String(_storage.getCurrentGross()) + comma +  String(_storage.getCurrentServe()) + comma +   String(_storage.getCurrentCredit()) + comma + String(_storage.getCurrentPower()) + comma ;
-      //18,19,20,21,22
-      buffer  += String(_storage.getLifetimeTransaction()) + comma + String(_storage.getLifetimeGross()) + comma +  String(_storage.getLifetimeServe()) + comma + String(_storage.getLifetimeCredit())+ comma +   String(_storage.getCurrentCredit()) + comma + String(_storage.getLifetimePower());
-      
+      buffer += String(terminals[0].timeLapse) + comma;
+      buffer += String(terminals[1].timeLapse) + comma;
+      buffer += String(terminals[2].timeLapse) + comma;
+      buffer += String(terminals[3].timeLapse) + comma;
+      //13,14 transaction
+      buffer += String(_storage.getCurrentTransaction()) + comma + String(_storage.getLifetimeTransaction()) + comma;
+      //15,16 gross
+      buffer += String(_storage.getCurrentGross()) + comma +  String(_storage.getLifetimeGross()) + comma;
+      //17,18 serve
+      buffer += String(_storage.getCurrentServe()) + comma +  String(_storage.getLifetimeServe()) + comma;
+      //19,20 credit
+      buffer += String(_storage.getCurrentCredit()) + comma + String(_storage.getLifetimeCredit())+ comma;
+      //21,22 power
+      buffer += String(_storage.getCurrentPower()) + comma + String(_storage.getLifetimePower());
       buffer += "\n"; 
-
       return;
    }
 
