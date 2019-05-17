@@ -69,7 +69,7 @@ void BillCoinAcceptor::detach(void) {
 
 //Uncomment when emi detected
 void BillCoinAcceptor::readCoinPulse(void) {
-    for (uint8_t interval = 0; interval < 150; interval++) {
+    for (_index = 0; _index < 150; _index++) {
         if (digitalRead(_pinCoin))return;
         else delayMicroseconds(1);
     }
@@ -78,7 +78,7 @@ void BillCoinAcceptor::readCoinPulse(void) {
 
 //Uncomment when emi detected
 // void BillCoinAcceptor::onCount(void) {
-//     for (uint8_t interval = 0; interval < 10; interval++) {
+//     for (uint8_t _index = 0; _index < 10; _index++) {
 //         if (digitalRead(_pinCount))return;
 //             else delayMicroseconds(1);
 //         }

@@ -20,6 +20,7 @@ class Helper {
 
           uint32_t parseInt(String value);
      private:
+          uint8_t _index = 0;
           char _buffer[20];
      
 };

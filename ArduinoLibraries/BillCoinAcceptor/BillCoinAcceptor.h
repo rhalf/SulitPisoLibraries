@@ -25,6 +25,7 @@ private:
   uint8_t _coinValue;
   uint8_t _pinCoin;
   uint8_t _activeState = false;
+  uint8_t _index = 0;
 };
 
 #endif // _BILLCOINACCEPTOR_H

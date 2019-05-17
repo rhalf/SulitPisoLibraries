@@ -20,7 +20,7 @@ String Helper::toUtf8Time(uint32_t value) {
 }
 
 String Helper::padding(String data, String character, uint8_t length){
-    for(uint8_t index = data.length(); index < length; index++){
+    for(_index = data.length(); _index < length; _index++){
         data += character;
     }
     return data;
@@ -29,24 +29,20 @@ String Helper::padding(String data, String character, uint8_t length){
 
 String Helper::toHexString(uint8_t * data, uint8_t length){
     String str1 = "";
-
-    for (uint8_t index = 0; index < length; index++) {
+    for (_index = 0; _index < length; _index++) {
        char buff[4];
-       sprintf(buff, "%02x", data[index]);
+       sprintf(buff, "%02x", data[_index]);
        str1 += String(buff);
     }
-    
     return str1;
 }
 
 uint32_t Helper::parseInt(String value) {
     String buffer = "";
-
-    for (uint8_t index = 0; index < value.length(); index++) {
-        if (isDigit(value.charAt(index))) { 
-            buffer += value.charAt(index); 
+    for (_index = 0; _index < value.length(); _index++) {
+        if (isDigit(value.charAt(_index))) { 
+            buffer += value.charAt(_index); 
         }
     }
-    
     return buffer.toInt();
 }
