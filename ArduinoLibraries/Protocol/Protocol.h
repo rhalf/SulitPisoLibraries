@@ -30,7 +30,7 @@ class Protocol : public SoftwareSerial {
 
    private:
       Callback _onReceived;
-      uint8_t _index;
+      uint8_t _index = 0;
 
       Storage _storage;
       Helper _helper;

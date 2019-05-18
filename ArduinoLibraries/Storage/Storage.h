@@ -17,7 +17,7 @@ class Storage {
         static const uint8_t PIN                   = OFFSET * 0x01;    
         static const uint8_t RATE                  = OFFSET * 0x02; 
         static const uint8_t MINIMUM               = OFFSET * 0x03;
-        static const uint8_t POWER                 = OFFSET * 0x04;
+        static const uint8_t LIMIT                 = OFFSET * 0x04;
 
         static const uint8_t CURRENT_TRANSACT      = OFFSET * 0x05;
         static const uint8_t CURRENT_GROSS         = OFFSET * 0x06;
@@ -36,7 +36,7 @@ class Storage {
         static const uint8_t FORMAT                = OFFSET * 0x22;
 
         Storage(void);
-        void destroy(void);
+        
         //mode
         void setMode(uint32_t mode);
         uint32_t getMode(void); 
@@ -58,37 +58,39 @@ class Storage {
         //minimum
         void setMinimum(uint32_t min);
         uint32_t getMinimum(void);
-        //power
-        void setPower(uint32_t min);
-        uint32_t getPower(void);
+        //limit
+        void setLimit(uint32_t lim);
+        uint32_t getLimit(void);
 
         //transaction
-        void incrementTransaction(uint32_t value);
+        void incrementTransaction(uint16_t value);
         uint32_t getCurrentTransaction(void);
         uint32_t getLifetimeTransaction(void);
         //gross
-        void incrementGross(uint32_t value);
+        void incrementGross(uint16_t value);
         uint32_t getCurrentGross(void);
         uint32_t getLifetimeGross(void);
         //serve
-        void incrementServe(uint32_t value);
+        void incrementServe(uint16_t value);
         uint32_t getCurrentServe(void);
         uint32_t getLifetimeServe(void);
         //credit
-        void incrementCredit(uint32_t value);
+        void incrementCredit(uint16_t value);
         uint32_t getCurrentCredit(void);
         uint32_t getLifetimeCredit(void);
         
         //power
-        void incrementPower(uint32_t value);
+        void incrementPower(uint16_t value);
         uint32_t getCurrentPower(void);
         uint32_t getLifetimePower(void);
 
     private:
         uint32_t _pin = 123456;    //Default pin is 123456 
-        uint32_t _rate = 60;       //Default rate is coin1 : 60s (1peso = 1min)
+        uint32_t _rate = 120;      //Default rate is (1peso = 2mins)
+        uint32_t _limit = 10000;   //Default limit 10 thousand pesos
         uint32_t _zero = 0;        //Default is zero value
 
+        uint8_t index;
 
 };
 #endif // _STORAGE_H

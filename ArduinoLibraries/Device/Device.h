@@ -29,6 +29,7 @@ class Device {
       static char * getServingTime();
       static char * getCredit();
       static char * getPower();
+      static char * getFull();
 
    private:
       static const char  COMPANY[] PROGMEM;
@@ -49,9 +50,10 @@ class Device {
       static const char  SERVINGTIME[] PROGMEM;
       static const char  CREDIT[] PROGMEM;
       static const char  POWER[] PROGMEM;
+      static const char  FULL[] PROGMEM;
 
       static const char * const TABLE[] PROGMEM;
-      static char buffer[20];
+      static char buffer[15];
 };
 
 

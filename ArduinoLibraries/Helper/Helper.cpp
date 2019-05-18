@@ -1,6 +1,13 @@
 #include "Helper.h"
 #include "Arduino.h"
 
+String Helper::toUtf8(float value) {
+    memset(this->_buffer, 0, sizeof(this->_buffer));
+
+    sprintf(this->_buffer, "%d", value);
+    return String(this->_buffer);
+}
+
 String Helper::toUtf8Currency(uint32_t value) {
     memset(this->_buffer, 0, sizeof(this->_buffer));
 

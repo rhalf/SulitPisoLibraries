@@ -51,22 +51,22 @@ void Protocol::interpret(void) {
       buffer +=  String(_storage.getMode()) + comma;
       //3,4,5
       buffer += String(_storage.getFormatDate()) + comma + String(_storage.getResetDate()) + comma  + String(_storage.getClearDate()) + comma;
-      //6,7,8
-      buffer += String(Timer::getSeconds()) + comma + String(_storage.getRate()) + comma + String(_storage.getMinimum()) + comma;
-      // 9,10,11,12
+      //6,7,8,9
+      buffer += String(Timer::getSeconds()) + comma + String(_storage.getRate()) + comma + String(_storage.getMinimum()) + comma + String(_storage.getLimit()) + comma;
+      //10,11,12,13
       buffer += String(terminals[0].timeLapse) + comma;
       buffer += String(terminals[1].timeLapse) + comma;
       buffer += String(terminals[2].timeLapse) + comma;
       buffer += String(terminals[3].timeLapse) + comma;
-      //13,14 transaction
+      //14,15 transaction
       buffer += String(_storage.getCurrentTransaction()) + comma + String(_storage.getLifetimeTransaction()) + comma;
-      //15,16 gross
+      //16,17 gross
       buffer += String(_storage.getCurrentGross()) + comma +  String(_storage.getLifetimeGross()) + comma;
-      //17,18 serve
+      //18,19 serve
       buffer += String(_storage.getCurrentServe()) + comma +  String(_storage.getLifetimeServe()) + comma;
-      //19,20 credit
+      //20,21 credit
       buffer += String(_storage.getCurrentCredit()) + comma + String(_storage.getLifetimeCredit())+ comma;
-      //21,22 power
+      //22,23 power
       buffer += String(_storage.getCurrentPower()) + comma + String(_storage.getLifetimePower());
       buffer += "\n"; 
       return;
@@ -106,6 +106,10 @@ void Protocol::interpret(void) {
    } else if (command == "MI") { 
       // set minimum
       _storage.setMinimum(value1);
+      buffer += ok;
+   } else if (command == "LI") { 
+      // set limit
+      _storage.setLimit(value1);
       buffer += ok;
    } else if (command == "RT") {
       // reset
