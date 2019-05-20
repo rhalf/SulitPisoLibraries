@@ -106,7 +106,7 @@ static const char  Device::GROSS[] PROGMEM              = "Coins";
 static const char  Device::SERVINGTIME[] PROGMEM        = "Serve";
 static const char  Device::CREDIT[] PROGMEM             = "Credit";
 static const char  Device::POWER[] PROGMEM              = "Power";
-static const char  Device::FULL[] PROGMEM               = "(Full)";
+static const char  Device::LIMIT[] PROGMEM               = "(Limit)";
 
 static const char * const Device::TABLE[] PROGMEM= { 
     Device::COMPANY, 
@@ -127,7 +127,7 @@ static const char * const Device::TABLE[] PROGMEM= {
     Device::SERVINGTIME,
     Device::CREDIT,
     Device::POWER,
-    Device::FULL
+    Device::LIMIT
 };
 
 static char Device::buffer[15];
@@ -215,7 +215,7 @@ static char * Device::getPower() {
     return  Device::buffer;
 }
 
-static char * Device::getFull() {
+static char * Device::getLimit() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[14]);
     strcpy_P(Device::buffer, ptr);
     return  Device::buffer;
