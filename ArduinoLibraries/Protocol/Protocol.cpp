@@ -4,7 +4,6 @@
 #include "Storage.h"
 #include "Helper.h"
 #include "Timer.h"
-#include "WatchDog.h"
 
 typedef void (* Callback)();
 
@@ -17,7 +16,7 @@ Protocol::Protocol(uint8_t rx, uint8_t tx) : SoftwareSerial(rx, tx) {
 }
 
 void Protocol::interpret(void) {
-   String device = "SPC001";
+   String device = "f" + String(_storage.getFirmware());
    String comma = ",";
    String ok = "OK";
 

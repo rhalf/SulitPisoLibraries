@@ -12,24 +12,26 @@ class Storage {
 
         static const uint8_t OFFSET                = sizeof(uint32_t) + 0;
         
-        static const uint8_t MODE                  = OFFSET * 0x00;    
+        static const uint8_t FIRST                 = OFFSET * 0x00;
+        static const uint8_t FIRMWARE              = OFFSET * 0x01;  
+        static const uint8_t MODE                  = OFFSET * 0x02;    
 
-        static const uint8_t PIN                   = OFFSET * 0x01;    
-        static const uint8_t RATE                  = OFFSET * 0x02; 
-        static const uint8_t MINIMUM               = OFFSET * 0x03;
-        static const uint8_t LIMIT                 = OFFSET * 0x04;
+        static const uint8_t PIN                   = OFFSET * 0x03;    
+        static const uint8_t RATE                  = OFFSET * 0x04; 
+        static const uint8_t MINIMUM               = OFFSET * 0x05;
+        static const uint8_t LIMIT                 = OFFSET * 0x06;
 
-        static const uint8_t CURRENT_TRANSACT      = OFFSET * 0x05;
-        static const uint8_t CURRENT_GROSS         = OFFSET * 0x06;
-        static const uint8_t CURRENT_SERVE         = OFFSET * 0x07;
-        static const uint8_t CURRENT_CREDIT        = OFFSET * 0x08;
-        static const uint8_t CURRENT_POWER         = OFFSET * 0x09;
+        static const uint8_t CURRENT_TRANSACT      = OFFSET * 0x07;
+        static const uint8_t CURRENT_GROSS         = OFFSET * 0x08;
+        static const uint8_t CURRENT_SERVE         = OFFSET * 0x09;
+        static const uint8_t CURRENT_CREDIT        = OFFSET * 0x10;
+        static const uint8_t CURRENT_POWER         = OFFSET * 0x11;
 
-        static const uint8_t LIFETIME_TRANSACT     = OFFSET * 0x10;
-        static const uint8_t LIFETIME_GROSS        = OFFSET * 0x11;
-        static const uint8_t LIFETIME_SERVE        = OFFSET * 0x12;
-        static const uint8_t LIFETIME_CREDIT       = OFFSET * 0x13;
-        static const uint8_t LIFETIME_POWER        = OFFSET * 0x14;
+        static const uint8_t LIFETIME_TRANSACT     = OFFSET * 0x12;
+        static const uint8_t LIFETIME_GROSS        = OFFSET * 0x13;
+        static const uint8_t LIFETIME_SERVE        = OFFSET * 0x14;
+        static const uint8_t LIFETIME_CREDIT       = OFFSET * 0x15;
+        static const uint8_t LIFETIME_POWER        = OFFSET * 0x16;
 
         static const uint8_t CLEAR                 = OFFSET * 0x20;
         static const uint8_t RESET                 = OFFSET * 0x21;
@@ -37,6 +39,12 @@ class Storage {
 
         Storage(void);
         
+        //first
+        void setFirst(uint32_t first);
+        uint32_t getFirst(void); 
+        //firmware
+        void setFirmware(uint32_t firmware);
+        uint32_t getFirmware(void); 
         //mode
         void setMode(uint32_t mode);
         uint32_t getMode(void); 

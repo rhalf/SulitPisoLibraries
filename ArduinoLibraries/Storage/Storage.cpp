@@ -6,6 +6,25 @@
 Storage::Storage(void) {
 
 }
+//first
+void Storage::setFirst(uint32_t first){
+   EEPROM.put(Storage::FIRST, first); 
+}
+uint32_t Storage::getFirst(void){
+   uint32_t first; 
+   EEPROM.get(Storage::FIRST, first);
+   return first;
+}
+
+//firmware
+void Storage::setFirmware(uint32_t firmware){
+   EEPROM.put(Storage::FIRMWARE, firmware); 
+}
+uint32_t Storage::getFirmware(void){
+   uint32_t firmware; 
+   EEPROM.get(Storage::FIRMWARE, firmware);
+   return firmware;
+}
 
 //mode
 void Storage::setMode(uint32_t mode){
