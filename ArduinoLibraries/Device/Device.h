@@ -21,12 +21,9 @@ class Device {
       static char * getTime();
       static char * getFree();
 
-      static char * getCurrent();
-      static char * getLifetime();
-
-      static char * getTransaction();
-      static char * getGross();
-      static char * getServingTime();
+      static char * getTrans();
+      static char * getAmount();
+      static char * getServe();
       static char * getCredit();
       static char * getPower();
       static char * getLimit();
@@ -41,19 +38,15 @@ class Device {
       static const char  TIME[] PROGMEM;
       static const char  FREE[] PROGMEM;
 
-
-      static const char  CURRENT[] PROGMEM;
-      static const char  LIFETIME[] PROGMEM;
-
       static const char  TRANSACTION[] PROGMEM;
-      static const char  GROSS[] PROGMEM;
-      static const char  SERVINGTIME[] PROGMEM;
+      static const char  AMOUNT[] PROGMEM;
+      static const char  SERVE[] PROGMEM;
       static const char  CREDIT[] PROGMEM;
       static const char  POWER[] PROGMEM;
       static const char  LIMIT[] PROGMEM;
 
       static const char * const TABLE[] PROGMEM;
-      static char buffer[15];
+      static char buffer[12];
 };
 
 

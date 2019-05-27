@@ -97,16 +97,13 @@ static const char  Device::COIN[] PROGMEM               = "Coin";
 static const char  Device::VACANT[] PROGMEM             = "Vacant";
 static const char  Device::TIME[] PROGMEM               = "Time";
 static const char  Device::FREE[] PROGMEM               = "Free";
-
-static const char  Device::CURRENT[] PROGMEM            = "Current";
-static const char  Device::LIFETIME[] PROGMEM           = "Lifetime";
+static const char  Device::LIMIT[] PROGMEM              = "Limit";
 
 static const char  Device::TRANSACTION[] PROGMEM        = "Trans";
-static const char  Device::GROSS[] PROGMEM              = "Coins";
-static const char  Device::SERVINGTIME[] PROGMEM        = "Serve";
+static const char  Device::AMOUNT[] PROGMEM             = "Amount";
 static const char  Device::CREDIT[] PROGMEM             = "Credit";
+static const char  Device::SERVE[] PROGMEM              = "Serve";
 static const char  Device::POWER[] PROGMEM              = "Power";
-static const char  Device::LIMIT[] PROGMEM               = "(Limit)";
 
 static const char * const Device::TABLE[] PROGMEM= { 
     Device::COMPANY, 
@@ -116,21 +113,17 @@ static const char * const Device::TABLE[] PROGMEM= {
     Device::COIN,
     Device::VACANT,
     Device::TIME,
-    
     Device::FREE,
-
-    Device::CURRENT,
-    Device::LIFETIME,
+    Device::LIMIT,
 
     Device::TRANSACTION,
-    Device::GROSS,
-    Device::SERVINGTIME,
+    Device::AMOUNT,
     Device::CREDIT,
-    Device::POWER,
-    Device::LIMIT
+    Device::SERVE,
+    Device::POWER
 };
 
-static char Device::buffer[15];
+static char Device::buffer[12];
 
 static char * Device::getCompany() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[0]);
@@ -173,50 +166,40 @@ static char * Device::getFree() {
     return  Device::buffer;
 }
 
-static char * Device::getCurrent() {
+static char * Device::getLimit() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[7]);
     strcpy_P(Device::buffer, ptr);
     return  Device::buffer;
 }
 
-static char * Device::getLifetime() {
+static char * Device::getTrans() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[8]);
     strcpy_P(Device::buffer, ptr);
     return  Device::buffer;
 }
 
-static char * Device::getTransaction() {
+static char * Device::getAmount() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[9]);
     strcpy_P(Device::buffer, ptr);
     return  Device::buffer;
 }
 
-static char * Device::getGross() {
+static char * Device::getCredit() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[10]);
     strcpy_P(Device::buffer, ptr);
     return  Device::buffer;
 }
 
-static char * Device::getServingTime() {
+static char * Device::getServe() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[11]);
     strcpy_P(Device::buffer, ptr);
     return  Device::buffer;
 }
 
-static char * Device::getCredit() {
+
+static char * Device::getPower() {
     char * ptr = (char *) pgm_read_word(&Device::TABLE[12]);
     strcpy_P(Device::buffer, ptr);
     return  Device::buffer;
 }
 
-static char * Device::getPower() {
-    char * ptr = (char *) pgm_read_word(&Device::TABLE[13]);
-    strcpy_P(Device::buffer, ptr);
-    return  Device::buffer;
-}
-
-static char * Device::getLimit() {
-    char * ptr = (char *) pgm_read_word(&Device::TABLE[14]);
-    strcpy_P(Device::buffer, ptr);
-    return  Device::buffer;
-}

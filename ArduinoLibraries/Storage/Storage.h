@@ -12,33 +12,36 @@ class Storage {
 
         static const uint8_t OFFSET                = sizeof(uint32_t) + 0;
         
-        static const uint8_t FIRST                 = OFFSET * 0x00;
-        static const uint8_t FIRMWARE              = OFFSET * 0x01;  
-        static const uint8_t MODE                  = OFFSET * 0x02;    
+        static const uint8_t FIRST                 = OFFSET * 1;
+        static const uint8_t FIRMWARE              = OFFSET * 2;  
+        static const uint8_t MODE                  = OFFSET * 3;    
 
-        static const uint8_t PIN                   = OFFSET * 0x03;    
-        static const uint8_t RATE                  = OFFSET * 0x04; 
-        static const uint8_t MINIMUM               = OFFSET * 0x05;
-        static const uint8_t LIMIT                 = OFFSET * 0x06;
+        static const uint8_t PIN                   = OFFSET * 4;    
+        static const uint8_t RATE                  = OFFSET * 5; 
+        static const uint8_t MINIMUM               = OFFSET * 6;
+        static const uint8_t LIMIT                 = OFFSET * 7;
 
-        static const uint8_t CURRENT_TRANSACT      = OFFSET * 0x07;
-        static const uint8_t CURRENT_GROSS         = OFFSET * 0x08;
-        static const uint8_t CURRENT_SERVE         = OFFSET * 0x09;
-        static const uint8_t CURRENT_CREDIT        = OFFSET * 0x10;
-        static const uint8_t CURRENT_POWER         = OFFSET * 0x11;
+        static const uint8_t CLEAR                 = OFFSET * 8;
+        static const uint8_t RESET                 = OFFSET * 9;
+        static const uint8_t FORMAT                = OFFSET * 10;
 
-        static const uint8_t LIFETIME_TRANSACT     = OFFSET * 0x12;
-        static const uint8_t LIFETIME_GROSS        = OFFSET * 0x13;
-        static const uint8_t LIFETIME_SERVE        = OFFSET * 0x14;
-        static const uint8_t LIFETIME_CREDIT       = OFFSET * 0x15;
-        static const uint8_t LIFETIME_POWER        = OFFSET * 0x16;
+        static const uint8_t CURRENT_TRANSA        = OFFSET * 11;
+        static const uint8_t CURRENT_AMOUNT        = OFFSET * 12;
+        static const uint8_t CURRENT_TRANSC        = OFFSET * 13;
+        static const uint8_t CURRENT_CREDIT        = OFFSET * 14;
 
-        static const uint8_t CLEAR                 = OFFSET * 0x20;
-        static const uint8_t RESET                 = OFFSET * 0x21;
-        static const uint8_t FORMAT                = OFFSET * 0x22;
+        static const uint8_t CURRENT_POWER         = OFFSET * 15;
+        static const uint8_t CURRENT_SERVE         = OFFSET * 16;
 
-        Storage(void);
-        
+
+        static const uint8_t LIFETIME_TRANSA       = OFFSET * 17;
+        static const uint8_t LIFETIME_AMOUNT       = OFFSET * 18;
+        static const uint8_t LIFETIME_TRANSC       = OFFSET * 19;
+        static const uint8_t LIFETIME_CREDIT       = OFFSET * 20;
+
+        static const uint8_t LIFETIME_POWER        = OFFSET * 21;
+        static const uint8_t LIFETIME_SERVE        = OFFSET * 22;
+
         //first
         void setFirst(uint32_t first);
         uint32_t getFirst(void); 
@@ -70,23 +73,30 @@ class Storage {
         void setLimit(uint32_t lim);
         uint32_t getLimit(void);
 
-        //transaction
-        void incrementTransaction(uint16_t value);
-        uint32_t getCurrentTransaction(void);
-        uint32_t getLifetimeTransaction(void);
-        //gross
-        void incrementGross(uint16_t value);
-        uint32_t getCurrentGross(void);
-        uint32_t getLifetimeGross(void);
-        //serve
-        void incrementServe(uint16_t value);
-        uint32_t getCurrentServe(void);
-        uint32_t getLifetimeServe(void);
+        //transA
+        void incrementTransA(uint16_t value);
+        uint32_t getCurrentTransA(void);
+        uint32_t getLifetimeTransA(void);
+        //amount
+        void incrementAmount(uint16_t value);
+        uint32_t getCurrentAmount(void);
+        uint32_t getLifetimeAmount(void);
+
+        //transA
+        void incrementTransC(uint16_t value);
+        uint32_t getCurrentTransC(void);
+        uint32_t getLifetimeTransC(void);
+        
         //credit
         void incrementCredit(uint16_t value);
         uint32_t getCurrentCredit(void);
         uint32_t getLifetimeCredit(void);
-        
+
+        //serve
+        void incrementServe(uint16_t value);
+        uint32_t getCurrentServe(void);
+        uint32_t getLifetimeServe(void);
+      
         //power
         void incrementPower(uint16_t value);
         uint32_t getCurrentPower(void);
@@ -97,8 +107,6 @@ class Storage {
         uint32_t _rate = 120;      //Default rate is (1peso = 2mins)
         uint32_t _limit = 10000;   //Default limit 10 thousand pesos
         uint32_t _zero = 0;        //Default is zero value
-
-        uint8_t index;
 
 };
 #endif // _STORAGE_H
