@@ -19,45 +19,43 @@ typedef struct Spdu {
 
 // CLASS,COMMAND,P1,P2,STATE
 class Protocol : public SoftwareSerial {
-public:
+ public:
   // classes
-  static const uint8_t CLASS_FIRMWARE        = 1;
-  static const uint8_t CLASS_MODE            = 2;
-  static const uint8_t CLASS_RUNTIME         = 3;
+  static const uint8_t CLASS_FIRMWARE = 1;
+  static const uint8_t CLASS_MODE = 2;
+  static const uint8_t CLASS_RUNTIME = 3;
 
-  static const uint8_t CLASS_PIN             = 10;
-  static const uint8_t CLASS_RATE            = 11;
-  static const uint8_t CLASS_MIN             = 12;
-  static const uint8_t CLASS_LIM             = 13;
+  static const uint8_t CLASS_PIN = 10;
+  static const uint8_t CLASS_RATE = 11;
+  static const uint8_t CLASS_MIN = 12;
+  static const uint8_t CLASS_LIM = 13;
 
-  static const uint8_t CLASS_TRANSA          = 20;
-  static const uint8_t CLASS_AMOUNT          = 21;
-  static const uint8_t CLASS_TRANSC          = 22;
-  static const uint8_t CLASS_CREDIT          = 23;
+  static const uint8_t CLASS_TRANSA = 20;
+  static const uint8_t CLASS_AMOUNT = 21;
+  static const uint8_t CLASS_TRANSC = 22;
+  static const uint8_t CLASS_CREDIT = 23;
 
-  static const uint8_t CLASS_SERVE           = 30;
-  static const uint8_t CLASS_POWER           = 31;
+  static const uint8_t CLASS_SERVE = 30;
+  static const uint8_t CLASS_POWER = 31;
 
-  static const uint8_t CLASS_CLR             = 40;
-  static const uint8_t CLASS_RST             = 41;
-  static const uint8_t CLASS_FMT             = 42;
+  static const uint8_t CLASS_CLR = 40;
+  static const uint8_t CLASS_RST = 41;
+  static const uint8_t CLASS_FMT = 42;
 
-  static const uint8_t CLASS_REBOOT          = 50;
-  static const uint8_t CLASS_TERMINALS       = 51;
+  static const uint8_t CLASS_REBOOT = 50;
+  static const uint8_t CLASS_TERMINALS = 51;
 
-  //command 
-  static const uint8_t COM_GET               = 1;
-  static const uint8_t COM_SET               = 2;
-  static const uint8_t COM_EXE               = 3;
-  static const uint8_t COM_CMP               = 4;
-  
-  //states
-  static const uint8_t STATE_SUCCESS         = 10;
+  // command
+  static const uint8_t COM_GET = 1;
+  static const uint8_t COM_SET = 2;
+  static const uint8_t COM_EXE = 3;
+  static const uint8_t COM_CMP = 4;
 
-  static const uint8_t STATE_ERR_WRONG_FMT   = 50;
-  static const uint8_t STATE_ERR_WRONG_CLA   = 51;
-  static const uint8_t STATE_ERR_WRONG_COM    = 52;
-  static const uint8_t STATE_ERR_WRONG_PIN   = 53;
+  // states
+  static const uint8_t STATE_SUCCESS = 10;
+  static const uint8_t STATE_ERR_WRONG_FMT = 50;
+  static const uint8_t STATE_ERR_WRONG_CLA = 51;
+  static const uint8_t STATE_ERR_WRONG_COM = 52;
 
   void interpret(void);
 

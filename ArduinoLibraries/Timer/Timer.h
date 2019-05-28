@@ -24,13 +24,20 @@ public:
   static uint32_t getMillis(void);
   static uint32_t getSeconds(void);
 
-  Timer(uint8_t unit);
+  static bool getMicrosToggle(uint32_t time);
+  static bool getMillisToggle(uint32_t time);
+  static bool getSecondsToggle(uint32_t time);
 
+
+  Timer(uint8_t unit);
   void begin(uint8_t frequency, uint32_t timeInterval, Callback callback);
-  
+
   void setFrequency(uint8_t frequency);
   void setTimeInterval(uint32_t time);
   void setCallback(Callback callback);
+  
+  
+  bool getToggle(void);
 
   uint32_t getTime(void);
   uint32_t getTimeElapse(void);

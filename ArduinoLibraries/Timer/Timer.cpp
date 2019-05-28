@@ -7,6 +7,15 @@ static uint32_t Timer::getMicros(void) { return micros(); }
 static uint32_t Timer::getMillis(void) { return millis(); } 
 static uint32_t Timer::getSeconds(void) { return millis() / 1000; } 
 
+static bool Timer::getMicrosToggle(uint32_t time) {
+  return (bool) (getMicros() % (time * 2));
+}
+static bool Timer::getMillisToggle(uint32_t time) {
+  return (bool) (getMillis() % (time * 2));
+}
+static bool Timer::getSecondsToggle(uint32_t time) {
+  return (bool) (getSeconds() % (time * 2)); 
+}
 
 Timer::Timer(uint8_t unit){
   _unit = unit;
@@ -31,9 +40,11 @@ void Timer::setCallback(Callback callback) {
   _callback = callback;
 }
 
-void Timer::start() {
+void Timer::start(void) {
   _state = Timer::STARTED;
 }
+
+
 
 uint32_t Timer::getTime(void) {
   if (_unit == Timer::MICROS) return Timer::getMicros();
