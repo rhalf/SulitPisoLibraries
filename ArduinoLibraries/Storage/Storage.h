@@ -20,27 +20,34 @@ class Storage {
         static const uint8_t RATE                  = OFFSET * 5; 
         static const uint8_t MINIMUM               = OFFSET * 6;
         static const uint8_t LIMIT                 = OFFSET * 7;
+        static const uint8_t PKWH                  = OFFSET * 8;
 
-        static const uint8_t CLEAR                 = OFFSET * 8;
-        static const uint8_t RESET                 = OFFSET * 9;
-        static const uint8_t FORMAT                = OFFSET * 10;
+        static const uint8_t CLEAR                 = OFFSET * 9;
+        static const uint8_t RESET                 = OFFSET * 10;
+        static const uint8_t FORMAT                = OFFSET * 11;
 
-        static const uint8_t CURRENT_TRANSA        = OFFSET * 11;
-        static const uint8_t CURRENT_AMOUNT        = OFFSET * 12;
-        static const uint8_t CURRENT_TRANSC        = OFFSET * 13;
-        static const uint8_t CURRENT_CREDIT        = OFFSET * 14;
+        static const uint8_t CURRENT_TRANSA        = OFFSET * 12;
+        static const uint8_t CURRENT_AMOUNT        = OFFSET * 13;
+        static const uint8_t CURRENT_TRANSC        = OFFSET * 14;
+        static const uint8_t CURRENT_CREDIT        = OFFSET * 15;
+        static const uint8_t CURRENT_TRANSF        = OFFSET * 16;
+        static const uint8_t CURRENT_FREE          = OFFSET * 17;
 
-        static const uint8_t CURRENT_POWER         = OFFSET * 15;
-        static const uint8_t CURRENT_SERVE         = OFFSET * 16;
+        static const uint8_t CURRENT_POWER         = OFFSET * 18;
+        static const uint8_t CURRENT_SERVE         = OFFSET * 19;
+        static const uint8_t CURRENT_TIME          = OFFSET * 20;
 
 
-        static const uint8_t LIFETIME_TRANSA       = OFFSET * 17;
-        static const uint8_t LIFETIME_AMOUNT       = OFFSET * 18;
-        static const uint8_t LIFETIME_TRANSC       = OFFSET * 19;
-        static const uint8_t LIFETIME_CREDIT       = OFFSET * 20;
+        static const uint8_t LIFETIME_TRANSA       = OFFSET * 21;
+        static const uint8_t LIFETIME_AMOUNT       = OFFSET * 22;
+        static const uint8_t LIFETIME_TRANSC       = OFFSET * 23;
+        static const uint8_t LIFETIME_CREDIT       = OFFSET * 24;
+        static const uint8_t LIFETIME_TRANSF       = OFFSET * 25;
+        static const uint8_t LIFETIME_FREE         = OFFSET * 26;
 
-        static const uint8_t LIFETIME_POWER        = OFFSET * 21;
-        static const uint8_t LIFETIME_SERVE        = OFFSET * 22;
+        static const uint8_t LIFETIME_POWER        = OFFSET * 27;
+        static const uint8_t LIFETIME_SERVE        = OFFSET * 28;
+        static const uint8_t LIFETIME_TIME         = OFFSET * 29;
 
         //first
         void setFirst(uint32_t first);
@@ -72,11 +79,15 @@ class Storage {
         //limit
         void setLimit(uint32_t lim);
         uint32_t getLimit(void);
+        //pkwh
+        void setPkwh(uint32_t pkwh);
+        uint32_t getPkwh(void);
 
         //transA
         void incrementTransA(uint16_t value);
         uint32_t getCurrentTransA(void);
         uint32_t getLifetimeTransA(void);
+
         //amount
         void incrementAmount(uint16_t value);
         uint32_t getCurrentAmount(void);
@@ -92,6 +103,16 @@ class Storage {
         uint32_t getCurrentCredit(void);
         uint32_t getLifetimeCredit(void);
 
+        //transF
+        void incrementTransF(uint16_t value);
+        uint32_t getCurrentTransF(void);
+        uint32_t getLifetimeTransF(void);
+
+        //free
+        void incrementFree(uint16_t value);
+        uint32_t getCurrentFree(void);
+        uint32_t getLifetimeFree(void);
+        
         //serve
         void incrementServe(uint16_t value);
         uint32_t getCurrentServe(void);
@@ -102,11 +123,20 @@ class Storage {
         uint32_t getCurrentPower(void);
         uint32_t getLifetimePower(void);
 
+        //time
+        void incrementTime(uint16_t value);
+        uint32_t getCurrentTime(void);
+        uint32_t getLifetimeTime(void);
+
     private:
         uint32_t _pin = 123456;    //Default pin is 123456 
-        uint32_t _rate = 120;      //Default rate is (1peso = 2mins)
+        //spc rate
+        //uint32_t _rate = 240;      //Default rate is (1peso = 4m)
+        //spm rate
+        uint32_t _rate = 30;      //Default rate is (1peso = 30s)
         uint32_t _limit = 10000;   //Default limit 10 thousand pesos
         uint32_t _zero = 0;        //Default is zero value
+        uint32_t _pkwh = 1200;     //Default is 12.00 pesos per kwh
 
 };
 #endif // _STORAGE_H

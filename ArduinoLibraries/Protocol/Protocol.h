@@ -29,14 +29,18 @@ class Protocol : public SoftwareSerial {
   static const uint8_t CLASS_RATE = 11;
   static const uint8_t CLASS_MIN = 12;
   static const uint8_t CLASS_LIM = 13;
+  static const uint8_t CLASS_PKWH = 14;
 
   static const uint8_t CLASS_TRANSA = 20;
   static const uint8_t CLASS_AMOUNT = 21;
   static const uint8_t CLASS_TRANSC = 22;
   static const uint8_t CLASS_CREDIT = 23;
+  static const uint8_t CLASS_TRANSF = 24;
+  static const uint8_t CLASS_FREE   = 25;
 
   static const uint8_t CLASS_SERVE = 30;
-  static const uint8_t CLASS_POWER = 31;
+  static const uint8_t CLASS_TIME = 31;
+  static const uint8_t CLASS_POWER = 32;
 
   static const uint8_t CLASS_CLR = 40;
   static const uint8_t CLASS_RST = 41;

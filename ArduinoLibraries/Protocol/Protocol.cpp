@@ -147,6 +147,24 @@ void Protocol::execute(void) {
       }
       break;
 
+    case Protocol::CLASS_PKWH:
+      if (_spdu.com == Protocol::COM_GET) {
+        _spdu.p1 = _storage.getPkwh();
+        _spdu.p2 = _zero;
+        _spdu.sta = Protocol::STATE_SUCCESS;
+      } else if (_spdu.com == Protocol::COM_SET) {
+        _storage.setPkwh(_spdu.p1);
+
+        _spdu.p1 = _zero;
+        _spdu.p2 = _zero;
+        _spdu.sta = Protocol::STATE_SUCCESS;
+      } else {
+        _spdu.p1 = _zero;
+        _spdu.p2 = _zero;
+        _spdu.sta = Protocol::STATE_ERR_WRONG_COM;
+      }
+      break;
+
     case Protocol::CLASS_TRANSA:
       if (_spdu.com == Protocol::COM_GET) {
         _spdu.p1 = _storage.getCurrentTransA();
@@ -205,11 +223,47 @@ void Protocol::execute(void) {
       }
       break;
 
+    case Protocol::CLASS_TRANSF:
+      if (_spdu.com == Protocol::COM_GET) {
+        _spdu.p1 = _storage.getCurrentTransF();
+        _spdu.p2 = _storage.getLifetimeTransF();
+        _spdu.sta = Protocol::STATE_SUCCESS;
+      } else {
+        _spdu.p1 = _zero;
+        _spdu.p2 = _zero;
+        _spdu.sta = Protocol::STATE_ERR_WRONG_COM;
+      }
+      break;
+
+    case Protocol::CLASS_FREE:
+      if (_spdu.com == Protocol::COM_GET) {
+        _spdu.p1 = _storage.getCurrentFree();
+        _spdu.p2 = _storage.getLifetimeFree();
+        _spdu.sta = Protocol::STATE_SUCCESS;
+      } else {
+        _spdu.p1 = _zero;
+        _spdu.p2 = _zero;
+        _spdu.sta = Protocol::STATE_ERR_WRONG_COM;
+      }
+      break;
+
     case Protocol::CLASS_SERVE:
       if (_spdu.com == Protocol::COM_GET) {
         _spdu.sta = Protocol::STATE_SUCCESS;
         _spdu.p1 = _storage.getCurrentServe();
         _spdu.p2 = _storage.getLifetimeServe();
+      } else {
+        _spdu.p1 = _zero;
+        _spdu.p2 = _zero;
+        _spdu.sta = Protocol::STATE_ERR_WRONG_COM;
+      }
+      break;
+
+    case Protocol::CLASS_TIME:
+      if (_spdu.com == Protocol::COM_GET) {
+        _spdu.p1 = _storage.getCurrentTime();
+        _spdu.p2 = _storage.getLifetimeTime();
+        _spdu.sta = Protocol::STATE_SUCCESS;
       } else {
         _spdu.p1 = _zero;
         _spdu.p2 = _zero;

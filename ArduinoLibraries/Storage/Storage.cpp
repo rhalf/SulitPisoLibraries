@@ -35,8 +35,13 @@ void Storage::clear(uint32_t date) {
    EEPROM.put(Storage::CURRENT_AMOUNT, _zero);
    EEPROM.put(Storage::CURRENT_TRANSC, _zero);
    EEPROM.put(Storage::CURRENT_CREDIT, _zero);
+   EEPROM.put(Storage::CURRENT_TRANSF, _zero);
+   EEPROM.put(Storage::CURRENT_FREE, _zero);
+
    EEPROM.put(Storage::CURRENT_SERVE, _zero);
+   EEPROM.put(Storage::CURRENT_TIME, _zero);
    EEPROM.put(Storage::CURRENT_POWER, _zero);
+
    EEPROM.put(Storage::CLEAR, date); 
 }
 uint32_t Storage::getClearDate(void) {
@@ -51,6 +56,7 @@ void Storage::reset(uint32_t date) {
    EEPROM.put(Storage::RATE, _rate); 
    EEPROM.put(Storage::MINIMUM, _zero);
    EEPROM.put(Storage::LIMIT, _limit);
+   EEPROM.put(Storage::PKWH, _pkwh);
 
    EEPROM.put(Storage::RESET, date);
 }
@@ -66,19 +72,28 @@ void Storage::format(uint32_t date) {
    EEPROM.put(Storage::RATE, _rate); 
    EEPROM.put(Storage::MINIMUM, _zero);
    EEPROM.put(Storage::LIMIT, _limit);
+   EEPROM.put(Storage::PKWH, _pkwh);
 
    EEPROM.put(Storage::CURRENT_TRANSA, _zero);
    EEPROM.put(Storage::CURRENT_AMOUNT, _zero);
    EEPROM.put(Storage::CURRENT_TRANSC, _zero);
    EEPROM.put(Storage::CURRENT_CREDIT, _zero);
+   EEPROM.put(Storage::CURRENT_TRANSF, _zero);
+   EEPROM.put(Storage::CURRENT_FREE, _zero);
+
    EEPROM.put(Storage::CURRENT_SERVE, _zero);
+   EEPROM.put(Storage::CURRENT_TIME, _zero);
    EEPROM.put(Storage::CURRENT_POWER, _zero);
 
    EEPROM.put(Storage::LIFETIME_TRANSA, _zero);
    EEPROM.put(Storage::LIFETIME_AMOUNT, _zero);
    EEPROM.put(Storage::LIFETIME_TRANSC, _zero);
    EEPROM.put(Storage::LIFETIME_CREDIT, _zero);
+   EEPROM.put(Storage::LIFETIME_TRANSF, _zero);
+   EEPROM.put(Storage::LIFETIME_FREE, _zero);
+
    EEPROM.put(Storage::LIFETIME_SERVE, _zero);
+   EEPROM.put(Storage::LIFETIME_TIME, _zero);
    EEPROM.put(Storage::LIFETIME_POWER, _zero);
 
    EEPROM.put(Storage::CLEAR, date);
@@ -125,6 +140,15 @@ uint32_t Storage::getLimit(void) {
    uint32_t lim; 
    EEPROM.get(Storage::LIMIT, lim);
    return lim;
+}
+//=============================================================================
+void Storage::setPkwh(uint32_t pkwh) {
+   EEPROM.put(Storage::PKWH, pkwh); 
+}
+uint32_t Storage::getPkwh(void) {
+   uint32_t pkwh; 
+   EEPROM.get(Storage::PKWH, pkwh);
+   return pkwh;
 }
 //=============================================================================
 void Storage::incrementTransA(uint16_t value) {
@@ -220,6 +244,52 @@ uint32_t Storage::getLifetimeCredit(void) {
    return credit;
 }
 //=============================================================================
+void Storage::incrementTransF(uint16_t value) {
+   uint32_t transF; 
+   //store to current
+   EEPROM.get(Storage::CURRENT_TRANSF, transF);
+   transF += value;
+   EEPROM.put(Storage::CURRENT_TRANSF, transF);
+   //store to lifetime
+   EEPROM.get(Storage::LIFETIME_TRANSF, transF);
+   transF += value;
+   EEPROM.put(Storage::LIFETIME_TRANSF, transF);
+}
+uint32_t Storage::getCurrentTransF(void) { 
+   uint32_t transF; 
+   EEPROM.get(Storage::CURRENT_TRANSF, transF);
+   return transF;
+}
+uint32_t Storage::getLifetimeTransF (void) {
+   uint32_t transF; 
+   EEPROM.get(Storage::LIFETIME_TRANSF, transF);
+   return transF;
+}
+//=============================================================================
+void Storage::incrementFree(uint16_t value) {
+   uint32_t free; 
+   //store to current
+   EEPROM.get(Storage::CURRENT_FREE, free);
+   free += value;
+   EEPROM.put(Storage::CURRENT_FREE, free);
+   //store to lifetime
+   EEPROM.get(Storage::LIFETIME_FREE, free);
+   free += value;
+   EEPROM.put(Storage::LIFETIME_FREE, free);
+   Storage::incrementTransF(1);
+   Storage::incrementServe(value * Storage::getRate());
+}
+uint32_t Storage::getCurrentFree(void) { 
+   uint32_t free; 
+   EEPROM.get(Storage::CURRENT_FREE, free);
+   return free;
+}
+uint32_t Storage::getLifetimeFree(void) {
+   uint32_t free; 
+   EEPROM.get(Storage::LIFETIME_FREE, free);
+   return free;
+}
+//=============================================================================
 void Storage::incrementServe(uint16_t value) {
    uint32_t serve; 
    //store to current
@@ -262,5 +332,27 @@ uint32_t Storage::getLifetimePower(void) {
    uint32_t power; 
    EEPROM.get(Storage::LIFETIME_POWER, power);
    return power;
+}
+//=============================================================================
+void Storage::incrementTime(uint16_t value) {
+   uint32_t time; 
+   //store to current
+   EEPROM.get(Storage::CURRENT_TIME, time);
+   time += value;
+   EEPROM.put(Storage::CURRENT_TIME, time);
+   //store to lifetime
+   EEPROM.get(Storage::LIFETIME_TIME, time);
+   time += value;
+   EEPROM.put(Storage::LIFETIME_TIME, time);
+}
+uint32_t Storage::getCurrentTime(void) { 
+   uint32_t time; 
+   EEPROM.get(Storage::CURRENT_TIME, time);
+   return time;
+}
+uint32_t Storage::getLifetimeTime(void) {
+   uint32_t time; 
+   EEPROM.get(Storage::LIFETIME_TIME, time);
+   return time;
 }
 
