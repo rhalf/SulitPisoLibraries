@@ -48,8 +48,8 @@ void BillCoinAcceptor::detach(void) {
 }
 
 void BillCoinAcceptor::readCoinPulse(void) {
-    //looping for 15ms
-    for (_index = 0; _index < 10; _index++) {
+    // invalidate signals beyond minimum interval
+    for (_index = 0; _index < interval; _index++) {
         if (digitalRead(_pinCoin) != _activeState) return;
         else delay(1);
     }    

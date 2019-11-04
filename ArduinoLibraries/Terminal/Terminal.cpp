@@ -6,6 +6,7 @@
 Terminal::Terminal(uint8_t pin) {
   _pin = pin;
   pinMode(_pin, OUTPUT);
+  off();
 }
 
 void Terminal::setActiveState(bool activeState){
@@ -25,6 +26,7 @@ void Terminal::set(uint32_t second) {
   }
 
   _state = true;
+  on();
 }
 
 void Terminal::on() {
@@ -36,9 +38,6 @@ void Terminal::off(void) {
 }
 
 void Terminal::run(void) {
-    if (_state) on();
-    else off();
-    
     if (!_state) return;
 
     timeLapse = timeEnd - Timer::getSeconds();

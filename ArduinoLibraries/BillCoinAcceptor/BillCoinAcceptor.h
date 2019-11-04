@@ -14,7 +14,8 @@ public:
   BillCoinAcceptor(uint16_t pinCoin, uint8_t coinValue, bool activeState);
 
   uint16_t coinPulse = 0;
-
+  // 15 miliseconds minimum interval
+  uint16_t interval = 15; 
   //void attach(Callback cbCoin, Callback cbCount);
   void attach(Callback cbCoin);
   void detach(void);
