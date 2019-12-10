@@ -51,6 +51,7 @@ void Terminal::reset(void) {
   timeStart = 0;
   timeEnd = 0;
   _state = false;
+  off();
 }
 
 uint8_t Terminal::getPin(void) {
