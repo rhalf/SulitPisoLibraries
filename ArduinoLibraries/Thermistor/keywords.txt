@@ -1,0 +1,24 @@
+#######################################
+# Syntax Coloring Map For Terminal Class
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Thermistor	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+getCelsius      KEYWORD2
+getFahrenheit   KEYWORD2
+getPin          KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+#
+#ONCE	LITERAL1
+#TWICE   LITERAL1
+#NEVER	LITERAL1
+#FOREVER	LITERAL1

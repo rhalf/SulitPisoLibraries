@@ -1244,6 +1244,8 @@ uint8_t u8g2_UserInterfaceMessage(u8g2_t *u8g2, const char *title1, const char *
 /* u8g2_input_value.c */
 uint8_t u8g2_UserInterfaceInputValue(u8g2_t *u8g2, const char *title, const char *pre, uint8_t *value, uint8_t lo, uint8_t hi, uint8_t digits, const char *post);
 
+/* u8g2_input_value_16.c */
+uint8_t u8g2_UserInterfaceInputValue16(u8g2_t *u8g2, const char *title, const char *pre, uint16_t *value, uint16_t lo, uint16_t hi, uint8_t digits, const char *post);
 
 /*==========================================*/
 /* u8x8_d_sdl_128x64.c */

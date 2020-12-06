@@ -130,7 +130,7 @@ class Storage {
 
     private:
         uint32_t _pin = 123456;     //Default pin is 123456 
-        uint32_t _rate = 30;       //Default rate is spm(1peso = 30s) spc(1peso=3m)
+        uint32_t _rate = 180;       //Default rate is spm(1peso = 30s) spc(1peso=3m)
         //uint32_t _rate = 180;       //Default rate is spm(1peso = 30s) spc(1peso=3m)
         uint32_t _limit = 5000;     //Default limit 10 thousand pesos
         uint32_t _zero = 0;         //Default is zero value

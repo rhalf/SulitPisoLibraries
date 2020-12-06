@@ -2,16 +2,9 @@
 #include "Arduino.h"
 // typedef void (* CallBack)();
 
-Buzzer::Buzzer(uint8_t pin, uint16_t frequency, uint16_t time){
+Buzzer::Buzzer(uint8_t pin, uint8_t type){
   _pin = pin;
-  _frequency = frequency;
-  _time = time;
-  pinMode(_pin, OUTPUT);
-}
-
-Buzzer::Buzzer(uint8_t pin, uint16_t frequency){
-  _pin = pin;
-  _frequency = frequency;
+  _type = type;
   pinMode(_pin, OUTPUT);
 }
 
@@ -24,10 +17,26 @@ Buzzer::Buzzer(void){
   pinMode(_pin, OUTPUT);
 }
 
-void Buzzer::play() {
-  tone(_pin, _frequency, _time);
+
+void Buzzer::setFrequency(uint16_t frequency) {
+  _frequency = frequency;
+}
+void Buzzer::setTime(uint16_t time) {
+  _time = time;
 }
 
-void Buzzer::off(void) {
-  noTone(_pin);
+void Buzzer::play() {
+  if (_type == Buzzer::ACTIVE){
+    digitalWrite(_pin, HIGH);
+  } else {
+    tone(_pin, _frequency, _time);
+  }
+}
+
+void Buzzer::stop(void) {
+  if (_type == Buzzer::ACTIVE){
+    digitalWrite(_pin, LOW);
+  } else {
+   noTone(_pin);
+  }
 }

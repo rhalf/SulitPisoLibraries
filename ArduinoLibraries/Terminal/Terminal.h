@@ -12,7 +12,7 @@ class Terminal {
 public:
 
   Terminal(uint8_t pin);
-  Terminal(uint8_t pin, bool trigger);
+  Terminal(uint8_t pin, bool activeState);
 
   uint32_t timeStart = 0;
   uint32_t timeEnd = 0;
@@ -20,7 +20,9 @@ public:
 
 
   void setActiveState(bool activeState);
-  bool getState(void);
+  bool getTimerState(void);
+  bool getPinState(void);
+  
   void run(void);
 
   void set(uint32_t second);
@@ -36,6 +38,7 @@ public:
 private:
   uint8_t _pin;
   bool _activeState = false;
-  bool _state = false;
+  bool _timerState = false;
+  bool _pinState = false;
 };
 #endif // _TERMINAL_H

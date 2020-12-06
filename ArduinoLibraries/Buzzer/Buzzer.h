@@ -11,14 +11,21 @@ class Buzzer {
 public:
   Buzzer();
   Buzzer(uint8_t pin);
-  Buzzer(uint8_t pin, uint16_t frequency);
-  Buzzer(uint8_t pin, uint16_t frequency, uint16_t time);
+  Buzzer(uint8_t pin, uint8_t type);
+
+  void setFrequency(uint16_t frequency);
+  void setTime(uint16_t time);
 
   void play(void);
-  void off(void);
+  void stop(void);
+
+  static const uint8_t ACTIVE = 0;
+  static const uint8_t PASSIVE = 1;
 
 private:
   uint8_t _pin = 13;
+  uint8_t _type = 0;
+
   uint16_t _frequency = 1875;
   uint16_t _time = 50;
 

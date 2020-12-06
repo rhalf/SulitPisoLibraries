@@ -9,9 +9,12 @@
 class Helper {
 
      public:
+          
           String toUtf8(float value);
           String toUtf8Currency(uint32_t value);
+          
           String toUtf8Time(uint32_t value);
+          String toUtf8DateTime(uint32_t value);
 
           String toHexString(uint8_t * value, uint8_t length);
 

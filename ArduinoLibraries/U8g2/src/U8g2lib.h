@@ -297,7 +297,8 @@ uint8_t u8g2_UserInterfaceInputValue(u8g2_t *u8g2, const char *title, const char
       return u8g2_UserInterfaceMessage(&u8g2, title1, title2, title3, buttons); }
     uint8_t userInterfaceInputValue(const char *title, const char *pre, uint8_t *value, uint8_t lo, uint8_t hi, uint8_t digits, const char *post) {
       return u8g2_UserInterfaceInputValue(&u8g2, title, pre, value, lo, hi, digits, post); }
-    
+    uint8_t userInterfaceInputValue16(const char *title, const char *pre, uint16_t *value, uint16_t lo, uint16_t hi, uint8_t digits, const char *post) {
+      return u8g2_UserInterfaceInputValue16(&u8g2, title, pre, value, lo, hi, digits, post); }
 
      /* LiquidCrystal compatible functions */
     void home(void) { tx = 0; ty = 0;  u8x8_utf8_init(u8g2_GetU8x8(&u8g2)); }
