@@ -1,0 +1,91 @@
+#######################################
+# Syntax Coloring Map For Timer Class
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Storage	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+destroy KEYWORD2
+reset KEYWORD2
+
+setPinCode KEYWORD2
+getPinCode KEYWORD2
+
+setRate KEYWORD2
+getRate KEYWORD2
+
+incrementTransaction KEYWORD2
+getCurrentTransaction KEYWORD2
+getLifetimeTransaction KEYWORD2
+
+incrementGross KEYWORD2
+getCurrentGross KEYWORD2
+getLifetimeGross KEYWORD2
+
+incrementCoin1 KEYWORD2
+getCurrentCoin1 KEYWORD2
+getLifetimeCoin1 KEYWORD2
+
+incrementCoin5 KEYWORD2
+getCurrentCoin5 KEYWORD2
+getLifetimeCoin5 KEYWORD2
+
+incrementCoin10 KEYWORD2
+getCurrentCoin10 KEYWORD2
+getLifetimeCoin10 KEYWORD2
+
+incrementTerm0 KEYWORD2
+getCurrentTerm0 KEYWORD2
+getLifetimeTerm0 KEYWORD2
+
+incrementTerm1 KEYWORD2
+getCurrentTerm1 KEYWORD2
+getLifetimeTerm1 KEYWORD2
+
+incrementTerm2 KEYWORD2
+getCurrentTerm2 KEYWORD2
+getLifetimeTerm2 KEYWORD2
+
+incrementTerm3 KEYWORD2
+getCurrentTerm3 KEYWORD2
+getLifetimeTerm3 KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+RESERVE0            LITERAL1
+RESERVE1            LITERAL1
+RESERVE2            LITERAL1
+RESERVE3            LITERAL1
+RESERVE4            LITERAL1
+
+PINCODE             LITERAL1
+RATE                LITERAL1
+
+CURRENT_TRANSACT    LITERAL1
+CURRENT_GROSS       LITERAL1
+CURRENT_COIN_1      LITERAL1
+CURRENT_COIN_5      LITERAL1
+CURRENT_COIN_10     LITERAL1
+CURRENT_TERM_0      LITERAL1
+CURRENT_TERM_1      LITERAL1
+CURRENT_TERM_2      LITERAL1
+CURRENT_TERM_3      LITERAL1
+
+LIFETIME_TRANSACT   LITERAL1
+LIFETIME_GROSS      LITERAL1
+LIFETIME_COIN_1     LITERAL1
+LIFETIME_COIN_5     LITERAL1
+LIFETIME_COIN_10    LITERAL1
+LIFETIME_TERM_0     LITERAL1
+LIFETIME_TERM_1     LITERAL1
+LIFETIME_TERM_2     LITERAL1
+LIFETIME_TERM_3     LITERAL1

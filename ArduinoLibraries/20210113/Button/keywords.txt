@@ -1,0 +1,25 @@
+#######################################
+# Syntax Coloring Map For Terminal Class
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Button	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+setActiveState      KEYWORD2
+run                 KEYWORD2
+getState            KEYWORD2
+getPin              KEYWORD2
+
+setOnShortPressed   KEYWORD2
+setOnLongPressed    KEYWORD2
+            
+
+#######################################
+# Constants (LITERAL1)
+#######################################
