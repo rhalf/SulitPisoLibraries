@@ -23,7 +23,7 @@ public:
 
   uint8_t cCheckSum = 0;
 
-  byte cRaw[13];
+  uint8_t cRaw[13];
 
   void parse(byte * data);
   void generate();

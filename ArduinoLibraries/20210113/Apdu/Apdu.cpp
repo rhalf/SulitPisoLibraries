@@ -19,14 +19,13 @@ void Apdu::parse(byte * data) {
   cValue1 = beToInt(data + 4);
   cValue2 = beToInt(data + 8);
   memcpy(cRaw, data, SIZE);
-  for (uint8_t index = 0; index < SIZE - 1; index++) cCheckSum += cRaw[index];
+  for (uint8_t index = 0; index < (SIZE - 1); index++) cCheckSum += (uint8_t) cRaw[index];
 }
 
 uint8_t Apdu::checkSum() {
   uint8_t cs = 0;
-  for (uint8_t index = 0; index < SIZE - 1; index++) cs += cRaw[index];
-  if (cs == cCheckSum) return 1;
-  else return 0;
+  for (uint8_t index = 0; index < (SIZE - 1); index++) cs += (uint8_t) cRaw[index];
+  return ((uint8_t)cs == (uint8_t)cCheckSum);
 }
 
 uint32_t Apdu::beToInt(byte * data) {
@@ -46,13 +45,14 @@ uint32_t  Apdu::swapByte( uint32_t value ) {
 }
 
 void Apdu::generate() {
+  memset(cRaw, 0 , SIZE);
   cRaw[0] = cClass;
   cRaw[1] = cFunc;
   cRaw[2] = cParam;
   cRaw[3] = cState;
   intToBe(cRaw + 4, cValue1);
   intToBe(cRaw + 8, cValue2);
-  for (uint8_t index = 0; index < SIZE - 1; index++) cRaw[12] += cRaw[index];
+  for (uint8_t index = 0; index < (SIZE - 1); index++) cRaw[12] += (uint8_t) cRaw[index];
   cCheckSum = cRaw[12];
 }
 
@@ -69,7 +69,6 @@ void Apdu::clear() {
 
 String Apdu::toString() {
   //d0,1,0,0,5f,e1,98,86,0,0,0,0,0,
-
   String builder;
   for (uint8_t index; index < SIZE; index++) {
     builder += String(cRaw[index], HEX);
